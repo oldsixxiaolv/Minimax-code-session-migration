@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+*_migration/
+*_迁移包/
+
+# A bundle or a database must never reach the repository: both contain a real
+# conversation, file names, absolute paths, and the agent's memory file.
+bundle/
+*/bundle/
+*_migration/
+runtime-state.sqlite*
+user.md

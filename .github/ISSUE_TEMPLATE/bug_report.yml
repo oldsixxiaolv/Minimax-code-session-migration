@@ -1,0 +1,52 @@
+name: Bug report
+description: Something failed while exporting or importing
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Do not attach a bundle or a database
+
+        A migration bundle contains a real conversation, file names, absolute
+        paths, and the agent's memory file. Paste the *output* of a command, not
+        the folder it produced. Redact anything that identifies you.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What did you run, and what happened?
+      description: The exact command, and the output you got.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: true
+
+  - type: input
+    id: step
+    attributes:
+      label: Which step was it on?
+      description: export, verify, or import
+    validations:
+      required: true
+
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: |
+        Paste the output of:
+
+        python3 -c "import sqlite3,sys,platform; print(platform.platform(), sys.version.split()[0], sqlite3.connect('$HOME/.minimax/v2/sqlite/runtime-state.sqlite').execute('SELECT MAX(version) FROM local_runtime_v2_schema_migrations').fetchone()[0])"
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: schema
+    attributes:
+      label: If the message mentions a version or a column
+      description: Quote it exactly, including the table and column names.
